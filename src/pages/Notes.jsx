@@ -30,7 +30,7 @@ const Notes = () => {
 
 
 
-  const { summarizeNote, sendPrompt, suggestTags } = useOpenAI();
+  const { summarizeNote, suggestTitle, suggestTags } = useOpenAI();
 
   const filteredNotes = filterTag
     ? notes.filter(note => note.tags && note.tags.includes(filterTag))
@@ -71,7 +71,7 @@ const Notes = () => {
     setAiAction('title');
     try {
       const prompt = `Suggest a short, relevant title for this note:\n\n${note.content}`;
-      const title = await sendPrompt(prompt, 'You generate creative but relevant note titles.');
+      const title = await suggestTitle(prompt, 'You generate creative but relevant note titles.');
       const newTitle = title.split('\n')[0].replace(/^["“”']|["“”']$/g, '');
       const updated = notes.map(n => n.id === note.id ? { ...n, title: newTitle } : n);
       setNotes(updated);
@@ -90,7 +90,8 @@ const Notes = () => {
       setAiLoadingId(note.id);
       setAiAction('tags');
       
-      const suggested = await useOpenAI().suggestTags(note.text);  // Or useOpenAI().suggestTags
+      const suggested = await suggestTags(note.content); // use .content not .text if content is where your note lives
+
   
       console.log('Suggested Tags:', suggested);
   
