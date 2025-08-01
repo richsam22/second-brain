@@ -2,7 +2,7 @@
   export const useOpenAI = () => {
     const summarizeNote = async (noteText) => {
       try {
-        const res = await fetch('https://ollama-ai-backend-1.onrender.com/api/summarize', {
+        const res = await fetch('https://ollama-ai-backend-1.onrender.com/summarize', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ noteText }),
@@ -17,7 +17,7 @@
 
     const suggestTitle = async (noteText) => {
       try {
-        const res = await fetch('https://ollama-ai-backend-1.onrender.com/api/title', {
+        const res = await fetch('https://ollama-ai-backend-1.onrender.com/title', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ noteText }),
@@ -33,7 +33,7 @@
   
     const suggestTags = async (noteText) => {
       try {
-        const res = await fetch('https://ollama-ai-backend-1.onrender.com/api/tags', {
+        const res = await fetch('https://ollama-ai-backend-1.onrender.com/tags', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ noteText }),
