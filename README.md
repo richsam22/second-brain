@@ -1,12 +1,25 @@
-# React + Vite
+🧠 Second Brain – Your AI-Powered Thinking Companion
+Second Brain is a sleek, AI-enhanced note-taking app built with React. It helps you capture, organize, and make sense of your thoughts — right in your browser.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+No signup. No setup. Just smart, beautiful notes powered by AI.
 
-Currently, two official plugins are available:
+✨ Key Features
+📝 Create & Edit Notes in a clean, distraction-free UI.
+📌 Pin Notes to keep important thoughts top of mind.
+🧠 AI Summarize & Tag Suggestions (via OpenRouter API).
+🧾 AI-Generated Titles to instantly name your ideas.
+🏷️ Filter by Tags and 🔍 Search effortlessly.
+🌙 Light/Dark Mode Toggle for comfort.
+📂 Export Notes as PDF or Markdown.
+🗑️ Trash Bin for easy recovery.
+⚙️ Settings Panel with font, theme, language, sorting options.
+💾 Private & Local — your notes stay in your browser.
+🔐 Secure AI Key Handling via Vercel serverless function.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+🛠 Tech Stack
+. Frontend: React, React-Bootstrap, Zustand.
+. Styling: CSS gradients, custom glow effects.
+. AI Integration: OpenRouter (Mistral-7B or other supported models).
+. Deployment: Vercel + Serverless /api/ai proxy for secure key handling.
 
-## Expanding the ESLint configuration
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
