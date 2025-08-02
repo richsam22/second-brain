@@ -3,7 +3,7 @@ import { Button, Modal } from 'react-bootstrap';
 import { useNotes } from '../hooks/useNotes';
 import NoteList from '../components/NoteList';
 import NoteEditor from '../components/NoteEditor';
-import { useOpenAI } from '../hooks/useOpenAI';
+import { generateAIContent } from '../api/openrouter';
 import SearchBar from '../components/SearchBar';
 import { useSettings } from '../contexts/SettingsContext';
 
@@ -30,7 +30,7 @@ const Notes = () => {
 
 
 
-  const { summarizeNote, suggestTitle, suggestTags } = useOpenAI();
+  
 
   const filteredNotes = filterTag
     ? notes.filter(note => note.tags && note.tags.includes(filterTag))
@@ -54,7 +54,8 @@ const Notes = () => {
     setAiLoadingId(note.id);
     setAiAction('summary');
     try {
-      const summary = await summarizeNote(note.content);
+      const prompt = `Summarize this note in 2–3 lines:\n\n${note.content}`;
+      const summary = await generateAIContent(prompt);
       setModalContent(`🧠 Summary:\n\n${summary}`);
       setShowModal(true);
     } catch (err) {
@@ -65,15 +66,21 @@ const Notes = () => {
       setAiAction(null);
     }
   };
+  
 
   const handleSuggestTitle = async (note) => {
     setAiLoadingId(note.id);
     setAiAction('title');
     try {
-      const prompt = `Suggest a short, relevant title for this note:\n\n${note.content}`;
-      const title = await suggestTitle(prompt, 'You generate creative but relevant note titles.');
-      const newTitle = title.split('\n')[0].replace(/^["“”']|["“”']$/g, '');
-      const updated = notes.map(n => n.id === note.id ? { ...n, title: newTitle } : n);
+      const prompt = `Suggest a short, catchy, and relevant title for this note. Only return the title, no explanation:\n\n${note.content}`;
+
+      const title = await generateAIContent(prompt);
+      if (!title) {
+        alert('AI returned no title. Check your API key or Worker.');
+        return;
+      }
+      const cleanTitle = title.split('\n')[0].replace(/^["“”']|["“”']$/g, '');
+      const updated = notes.map(n => n.id === note.id ? { ...n, title: cleanTitle } : n);
       setNotes(updated);
     } catch (err) {
       console.error('Suggest title error:', err);
@@ -83,25 +90,27 @@ const Notes = () => {
       setAiAction(null);
     }
   };
+  
 
   const onSuggestTags = async (note) => {
-    // console.log('Suggesting tags for note:', note);
+    setAiLoadingId(note.id);
+    setAiAction('tags');
     try {
-      setAiLoadingId(note.id);
-      setAiAction('tags');
-      
-      const suggested = await suggestTags(note.content); // use .content not .text if content is where your note lives
-
+      const prompt = `Suggest 3 short, relevant tags as a comma-separated list. Do NOT include hashtags. Just the words:\n\n${note.content}`;
+      const response = await generateAIContent(prompt);
   
-      console.log('Suggested Tags:', suggested);
+      const cleanTags = response
+        .split(',')
+        .map(tag => tag.trim().replace(/^["“”']|["“”']$/g, ''))
+        .filter(tag => tag.length > 0);
   
-      setTagResults(`Suggested Tags:\n${suggested}`);
+      const updated = notes.map(n =>
+        n.id === note.id ? { ...n, tags: cleanTags } : n
+      );
+      setNotes(updated);
+  
+      setTagResults(`Tags added:\n${cleanTags.join(', ')}`);
       setShowTagsModal(true);
-      // Or replace alert with a modal / toast (explained below)
-  
-      // Optionally, update the note with suggested tags
-      // updateNote({ ...note, tags: suggested });
-  
     } catch (error) {
       console.error('Tag suggestion error:', error);
       alert('Failed to suggest tags.');
@@ -110,6 +119,8 @@ const Notes = () => {
       setAiAction(null);
     }
   };
+  
+  
 
   const handleTogglePin = (id) => {
     const updated = notes.map(note =>

@@ -33,7 +33,7 @@ const About = () => {
             Your productivity companion — always by your side.</p>
             <p>Designed and developed with ❤️ by Sam (React + Bootstrap + Custom CSS).</p>
             <p>Version: <code>v1.0.0</code></p>
-            <p>AI features powered locally using <code>Ollama</code>.</p>
+            <p>AI features powered using <code>openrouter.ai</code>.</p>
           </Accordion.Body>
         </Accordion.Item>
       </Accordion>
