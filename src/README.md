@@ -1,52 +1,30 @@
-# 🧠 Second Brain – AI-Enhanced Note & Knowledge Manager
+🧠 Second Brain – Your AI-Powered Thinking Companion
+Second Brain is a sleek, AI-enhanced note-taking app built with React. It helps you capture, organize, and make sense of your thoughts — right in your browser.
 
-Second Brain is a beautifully crafted personal knowledge manager that blends fast local performance with smart AI features. Store, organize, and retrieve your thoughts effortlessly — no signup, no servers, just your brain on turbo.
+No login. No setup. Just smart, beautiful notes powered by AI.
 
----
+✨ Key Features
+. 📝 Create & Edit Notes in a clean, distraction-free UI.
+. 📌 Pin Notes to keep important thoughts top of mind.
+. 🧠 AI Summarize & Tag Suggestions (via OpenRouter API).
+. 🧾 AI-Generated Titles to instantly name your ideas.
+. 🏷️ Filter by Tags and 🔍 Search effortlessly.
+. 🌙 Light/Dark Mode Toggle for comfort.
+. 📂 Export Notes as PDF or Markdown.
+. 🗑️ Trash Bin for easy recovery.
+. ⚙️ Settings Panel with font, language, sorting options.
+. 💾 Private & Local — your notes stay in your browser.
+. 🔐 Secure AI Key Handling via Vercel serverless function.
 
-## 🚀 Features
+🛠 Tech Stack
+. Frontend: React, React-Bootstrap, Zustand.
+. Styling: CSS gradients, custom glow effects.
+. AI Integration: OpenRouter (Mistral-7B or other supported models).
+. Deployment: Vercel + Serverless /api/ai proxy for secure key handling.
 
-### ✍️ Note Creation
-- Rich note editor (title, body, tags)
-- 📝 Rich Note Editor with Markdown
-- 🧠 AI-powered (Ollama):
-  - Title & Summary Generator
-  - Smart Tag Suggestions
-- 📌 Pin/Unpin Notes
-- 🗃️ Tag & Search Filtering
-- 🗑️ Trash System (Soft Delete)
-- 🌗 Theme Toggle (Light/Dark)
-- 🌍 Multilingual Support
-- ⚙️ Customizable Settings
-- 📄 Collapsible Terms & Privacy Policy
+🚀 Try It Live
+👉 second-brain.vercel.app – No signup, just start writing.
 
-### 🔍 Organization & Filtering
-- Pin/Unpin important notes
-- Tag-based filtering
-- Full-text search
-- Trash system (soft delete & restore)
 
-### 🎨 User Experience
-- Responsive layout (desktop & mobile)
-- Sidebar navigation (Home, Notes, Settings, Trash)
-- Light/Dark theme switch
-- Font size control
-- Language preference (multi-language toggle)
-
-### ⚙️ Settings & Personalization
-- Global settings persist across sessions (via `localStorage`)
-- About section with Terms, Privacy, and Credits
-
----
-
-## 🛠️ Tech Stack
-
-- **Frontend**: React, React-Bootstrap, Custom CSS
-- **State Management**: Zustand
-- **Storage**: localStorage
-- **AI Engine**: Ollama (optional, for local LLM inference)
-
----
-
-## 🗂️ Project Structure
-
+📄 License
+MIT

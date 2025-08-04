@@ -9,8 +9,7 @@ import { useSettings } from '../contexts/SettingsContext';
 
 
 
-const Notes = () => {
-  const [notes, setNotes] = useNotes();
+const Notes = ({ notes, setNotes }) => {
   const [editingNote, setEditingNote] = useState(null);
   const [filterTag, setFilterTag] = useState(null);
   const [aiLoadingId, setAiLoadingId] = useState(null);

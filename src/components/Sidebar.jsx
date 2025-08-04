@@ -36,7 +36,7 @@ const Sidebar = () => {
       )}
 
       <div className={`sidebar ${collapsed ? 'collapsed' : ''} ${isMobile ? 'mobile' : ''}`}>
-        {!collapsed && <h4 className="mb-4 mx-5 gradient-text"><Link to="/"><strong>🧠 Second Brain</strong></Link></h4>}
+        {!collapsed && <h4 className="mb-4 mx-5 gradient-text"><Link to="/"><img src="./second-brain.png" alt="" height={60} /><span>Second Brain</span></Link></h4>}
 
         <Nav className="flex-column gap-2">
           {navLinks.map(({ path, label }) => (

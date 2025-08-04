@@ -54,6 +54,8 @@ const translations = {
         viewNote: "View Notes",
         newNote: "New Note",
         yourNote: "Your Notes",
+        readMore: "Read More" || "Readmore",
+        showLess: "Show Less"
       },
       es: {
         home: "Inicio",
@@ -107,6 +109,8 @@ const translations = {
         viewNote: "Ver Notas",
         newNote: "Nueva Nota",
         yourNote: "Tus Notas",
+        readMore: "Leer más",
+        showLess: "Mostrar menos"
       },
       fr: {
         home: "Accueil",
@@ -160,6 +164,8 @@ const translations = {
         viewNote: "Voir les notes",
         newNote: "Nouvelle note",
         yourNote: "Vos notes",
+        readMore: "Lire plus",
+        showLess: "Afficher moins"
 
       },
       de: {
@@ -214,6 +220,8 @@ const translations = {
         viewNote: "Notizen anzeigen",
         newNote: "Neue Notiz",
         yourNote: "Deine Notizen",
+        readMore: "Mehr lesen",
+        showLess: "Weniger anzeigen"
       },
 };
 

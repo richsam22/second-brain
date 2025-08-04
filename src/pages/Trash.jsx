@@ -1,10 +1,19 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import NoteList from '../components/NoteList';
 import { useSettings } from '../contexts/SettingsContext';
 
 const Trash = ({ notes, setNotes }) => {
-  const trashedNotes = notes.filter(note => note.trashed);
   const { t } = useSettings();
+
+  const [trashedNotes, setTrashedNotes] = useState([]);
+
+  // Update local state when notes change (even between pages)
+  useEffect(() => {
+    const filtered = notes.filter(note => note.trashed);
+    setTrashedNotes(filtered);
+  }, [notes]);
+
+  
 
   const handleRestore = (id) => {
     setNotes(prev =>

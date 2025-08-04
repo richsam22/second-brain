@@ -8,6 +8,7 @@ import '../styles/custom.css';
 const Home = () => {
   const [notes] = useNotes();
   const { t } = useSettings();
+  
 
   const pinnedNotes = notes.filter(note => note.pinned);
   const recentNotes = [...notes]
@@ -42,7 +43,7 @@ const Home = () => {
                   <Card.Body>
                     <Card.Title>{note.title || "Untitled"}</Card.Title>
                     <Card.Text>{note.content.slice(0, 100)}...</Card.Text>
-                    <Link to="/notes" className="btn btn-sm btn-outline-primary">{t('openNote')}</Link>
+                    <Link to={`/notes?id=${note.id}`} className="btn btn-sm btn-outline-primary">{t('openNote')}</Link>
                   </Card.Body>
                 </Card>
               </Col>
@@ -59,7 +60,7 @@ const Home = () => {
           <Row xs={1} md={2} lg={3}>
             {recentNotes.map(note => (
               <Col key={note.id} className="mb-3">
-                <Link to="/notes" className=" text-decoration-none">
+                <Link to={`/notes?id=${note.id}`} className="text-decoration-none">
                 <Card className="note-card shadow-sm">
                   <div className="note-header recent-gradient" />
                   <Card.Body>

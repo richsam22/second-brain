@@ -22,8 +22,9 @@ const App = () => {
             <Route path="/notes" element={<Notes notes={notes} setNotes={setNotes} />} />
             <Route path="/settings" element={<Settings />} />
             <Route path="/about" element={<About />} />
-            <Route path="/trash" element={<Trash key={notes.filter(note => note.trashed).length} notes={notes} setNotes={setNotes} />}
-            />
+            <Route path="/trash" element={<Trash notes={notes} setNotes={setNotes} />} />
+
+           
           </Routes>
         </div>
       </div>
